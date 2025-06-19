@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Selamat Ulang Tahun</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    :root {
+      --pink: #ff85a2;
+      --soft-pink: #ffe6ec;
+      --dark: #2e2e2e;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: #fff;
+      perspective: 1200px;
+      overflow: hidden;
+    }
+
+    .container {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      transform-style: preserve-3d;
+      transform: rotateY(0deg);
+      transition: transform 1s ease-in-out;
+    }
+
+    .flipped {
+      transform: rotateY(-180deg);
+    }
+
+    .page {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 0;
+      left: 0;
+    }
+
+    .front {
+      background-color: #fff;
+      z-index: 2;
+    }
+
+    .back {
+      background-color: #fff;
+      transform: rotateY(180deg);
+    }
+
+    .card, .card2 {
+      background-color: var(--soft-pink);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(255, 192, 203, 0.4);
+      text-align: center;
+      max-width: 340px;
+      animation: fadeIn 1.2s;
+    }
+
+    .card2 {
+      max-width: 90%;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: var(--pink);
+    }
+
+    p {
+      font-size: 16px;
+      color: var(--dark);
+      margin: 10px 0;
+    }
+
+    .subtle {
+      font-size: 13px;
+      margin-top: 10px;
+      color: #777;
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 15px;
+      border: none;
+      border-radius: 10px;
+      background-color: var(--pink);
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(255, 131, 150, 0.3);
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 20px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .wind {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 50%;
+      animation: wind 8s linear infinite;
+    }
+
+    @keyframes wind {
+      0% { transform: translateX(0) translateY(0); opacity: 0.6; }
+      100% { transform: translateX(300px) translateY(-200px); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="book">
+    <!-- Halaman 1 -->
+    <div class="page front">
+      <div class="card">
+        <h1>Selamat Ulang Tahun Fira 🎉</h1>
+        <p>
+          Ciee udah nambah umur aja nih, udah nyiapin foto ktp belum wkwkwk.<br>
+         27 unik juga yah, Cancer ♋ <br>
+         katanya cancer itu Cantik, tapi ngga tau juga yekan<br>
+         Yuk semangat untuk 2 bulan lagiiiiiii
+        </p>
+    
+        <p class="subtle">— Patner unikmu hahaha</p>
+        <button onclick="handleClick()">Wih, apa nih?</button>
+      </div>
+    </div>
+
+    <!-- Halaman 2 -->
+    <div class="page back">
+      <div class="card2">
+        <!-- Wind efek -->
+        <div class="wind" style="top: 90%; left: 20%; animation-delay: 0s;"></div>
+        <div class="wind" style="top: 80%; left: 50%; animation-delay: 2s;"></div>
+        <div class="wind" style="top: 85%; left: 70%; animation-delay: 4s;"></div>
+
+        <!-- Ganti link gambar di bawah -->
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiVsHnFk59NfWkTGTWdXMmu3de9nxccHdn605rUgV5vMAKsXNuUekcCPaL-PDo5JpWxtDSyfKC3bJYXNweAuJDqKzIW6_VFefpWJ6lRcSslx-B68P5s-8H-mfO83D7Y7I6hulzG5jR3eSv3omUCGU-oCoaBuzrqRxVcp6kSy2B2ylqg3sR9IXioH5TH89cy/s908/1750119867401.jpg" alt="Ucapan Gambar" />
+        <h1>LUCU NGGA???</h1>
+        <p>Untung belum tak hapus fotonya tu wkwkwk, lucu soalnya~</p>
+
+        <button onclick="window.open('https://open.spotify.com/track/6VgyRGeR4cw6yNGazjGFhu?si=Z8m8fa3OQgik-6Br7zzEaw', '_blank')">🎵 Hadiah kecil</button>
+        <button onclick="window.open('https://wa.me/6282145545119?text=MAKASI%20PARELL', '_blank')">Meluncur 🚀</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Konfeti di halaman pertama
+    setTimeout(() => {
+      confetti({
+        particleCount: 100,
+        spread: 100,
+        origin: { y: 0.2 }
+      });
+    }, 1000);
+
+    // Tombol klik 5x
+  let clickCount = 0;
+  const button = document.querySelector("button");
+  const container = document.getElementById("book");
+
+  function randomWiggle() {
+    const x = (Math.random() - 0.5) * 20;
+    const y = (Math.random() - 0.5) * 20;
+    button.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
+    setTimeout(() => {
+      button.style.transform = "translate(0, 0)";
+    }, 150);
+  }
+
+  function handleClick() {
+    clickCount++;
+    if (clickCount < 3) {
+      randomWiggle();
+    } else {
+      container.classList.add("flipped");
+    }
+  }
+
+  // inject onclick via script (if inline event failed)
+  button.onclick = handleClick;
+</script>
+</body>
+</html>
