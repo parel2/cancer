@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancer Awareness</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            color: white;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+        }
+
+        .main-text {
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 50px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            opacity: 0;
+            animation: showButtons 0.5s ease-in 2s forwards;
+            position: relative;
+        }
+
+        @keyframes showButtons {
+            to { opacity: 1; }
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #ff1493, #ff69b4);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.3);
+            position: relative;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.5);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* Animasi untuk tombol BACA */
+        .btn-baca {
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .btn-baca.moving {
+            animation: quickSlide 0.5s ease-in-out;
+        }
+
+        @keyframes quickSlide {
+            0% { transform: translateX(0) translateY(0); }
+            50% { transform: translateX(200px) translateY(-100px) rotate(10deg); }
+            100% { transform: translateX(0) translateY(0) rotate(0deg); }
+        }
+
+        /* Animasi untuk tombol TONTON clones */
+        .clone-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-clone {
+            background: linear-gradient(45deg, #ff1493, #ff69b4);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: cloneAppear 0.5s ease-out;
+        }
+
+        .btn-clone.fake:hover {
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+        }
+
+        .btn-clone.disappearing {
+            animation: fadeOut 0.5s ease-out forwards;
+        }
+
+        @keyframes cloneAppear {
+            from { 
+                opacity: 0; 
+                transform: scale(0) rotate(180deg); 
+            }
+            to { 
+                opacity: 1; 
+                transform: scale(1) rotate(0deg); 
+            }
+        }
+
+        @keyframes fadeOut {
+            to { 
+                opacity: 0; 
+                transform: scale(0) rotate(-180deg); 
+            }
+        }
+
+        /* Animasi untuk tombol DENGARKAN */
+        .btn-dengarkan {
+            transition: all 0.3s ease;
+        }
+
+        .btn-dengarkan.disappearing {
+            animation: disappear 1s ease-out forwards;
+        }
+
+        .btn-dengarkan.moving {
+            animation: moveAroundFast 2s ease-in-out infinite;
+        }
+
+        @keyframes disappear {
+            to { 
+                opacity: 0; 
+                transform: scale(0) rotate(360deg); 
+            }
+        }
+
+        @keyframes moveAroundFast {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            12.5% { transform: translate(200px, -150px) rotate(45deg); }
+            25% { transform: translate(-180px, -200px) rotate(90deg); }
+            37.5% { transform: translate(250px, 100px) rotate(135deg); }
+            50% { transform: translate(-220px, 180px) rotate(180deg); }
+            62.5% { transform: translate(150px, -250px) rotate(225deg); }
+            75% { transform: translate(-280px, -100px) rotate(270deg); }
+            87.5% { transform: translate(200px, 200px) rotate(315deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .main-text {
+                font-size: 2rem;
+            }
+            
+            .buttons-container {
+                gap: 20px;
+            }
+            
+            .btn {
+                padding: 12px 24px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-text">
+            WOI NGAPAIN SINI???<br>PENASARAN YA SAMA CANCER??
+        </div>
+        
+        <div class="buttons-container" id="buttonsContainer">
+            <button class="btn btn-baca" id="btnBaca">BACA</button>
+            <button class="btn btn-tonton" id="btnTonton">TONTON</button>
+            <button class="btn btn-dengarkan" id="btnDengarkan">DENGARKAN</button>
+        </div>
+    </div>
+
+    <script>
+        let bacaClickCount = 0;
+        let tontonActivated = false;
+        let dengarkanActivated = false;
+
+        // Tombol BACA
+        const btnBaca = document.getElementById('btnBaca');
+        btnBaca.addEventListener('click', function() {
+            bacaClickCount++;
+            
+            if (bacaClickCount < 10) {
+                // Animasi bergerak
+                this.classList.add('moving');
+                
+                // Pindah posisi random
+                setTimeout(() => {
+                    const container = document.querySelector('.container');
+                    const containerRect = container.getBoundingClientRect();
+                    const newX = Math.random() * (containerRect.width - 200);
+                    const newY = Math.random() * (containerRect.height - 100);
+                    
+                    this.style.position = 'absolute';
+                    this.style.left = newX + 'px';
+                    this.style.top = newY + 'px';
+                    
+                    this.classList.remove('moving');
+                }, 500);
+            } else {
+                // Ketiga kalinya, berfungsi
+                window.open('https://id.m.wikipedia.org/wiki/Kanser_(astrologi)', '_blank');
+            }
+        });
+
+        // Tombol TONTON
+        const btnTonton = document.getElementById('btnTonton');
+        btnTonton.addEventListener('click', function() {
+            if (!tontonActivated) {
+                tontonActivated = true;
+                createClones();
+                this.style.display = 'none';
+            }
+        });
+
+        function createClones() {
+            const container = document.getElementById('buttonsContainer');
+            const cloneContainer = document.createElement('div');
+            cloneContainer.className = 'clone-container';
+            
+            // Buat 9 clone
+            for (let i = 0; i < 9; i++) {
+                const clone = document.createElement('button');
+                clone.className = 'btn-clone';
+                clone.textContent = 'TONTON';
+                
+                // Hanya 1 yang asli (random)
+                if (i === Math.floor(Math.random() * 9)) {
+                    clone.addEventListener('click', function() {
+                        window.open('https://youtu.be/jr5w5-OVeKw?si=CamZRMMIZkHGT_0V', '_blank');
+                    });
+                } else {
+                    clone.classList.add('fake');
+                    clone.addEventListener('click', function() {
+                        this.classList.add('disappearing');
+                        setTimeout(() => {
+                            this.remove();
+                        }, 500);
+                    });
+                }
+                
+                cloneContainer.appendChild(clone);
+            }
+            
+            container.appendChild(cloneContainer);
+        }
+
+        // Tombol DENGARKAN
+        const btnDengarkan = document.getElementById('btnDengarkan');
+        let dengarkanMoving = false;
+        
+        btnDengarkan.addEventListener('click', function() {
+            if (!dengarkanActivated) {
+                dengarkanActivated = true;
+                
+                // Hilang 1 detik
+                this.classList.add('disappearing');
+                
+                setTimeout(() => {
+                    this.classList.remove('disappearing');
+                    this.classList.add('moving');
+                    this.style.opacity = '1';
+                    this.style.transform = 'scale(1)';
+                    dengarkanMoving = true;
+                    
+                    // Tombol terus bergerak, tapi bisa diklik kapan saja
+                    const handleClick = (e) => {
+                        if (dengarkanMoving) {
+                            e.preventDefault();
+                            this.classList.remove('moving');
+                            dengarkanMoving = false;
+                            window.open('https://open.spotify.com/track/0GgN4MhR5GKn5IcKN0e0rG?si=nTeCl1QBTZGQ26S9qN486g', '_blank');
+                            this.removeEventListener('click', handleClick);
+                        }
+                    };
+                    this.addEventListener('click', handleClick);
+                }, 1000);
+            } else if (!dengarkanMoving) {
+                // Fungsi normal setelah animasi selesai
+                window.open('https://open.spotify.com/track/0GgN4MhR5GKn5IcKN0e0rG?si=nTeCl1QBTZGQ26S9qN486g', '_blank');
+            }
+        });
+    </script>
+</body>
+</html>
