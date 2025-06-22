@@ -207,7 +207,7 @@
         
         <div class="buttons-container" id="buttonsContainer">
             <button class="btn btn-baca" id="btnBaca">BACA (pindah)</button>
-            <button class="btn btn-tonton" id="btnTonton">TONTON (peluang)</button>
+            <button class="btn btn-tonton" id="btnTonton">TONTON</button>
             <button class="btn btn-dengarkan" id="btnDengarkan">DENGARKAN (tangkap)</button>
         </div>
     </div>
@@ -264,7 +264,7 @@
             for (let i = 0; i < 9; i++) {
                 const clone = document.createElement('button');
                 clone.className = 'btn-clone';
-                clone.textContent = 'TONTON';
+                clone.textContent = 'Pilih';
                 
                 // Hanya 1 yang asli (random)
                 if (i === Math.floor(Math.random() * 9)) {
